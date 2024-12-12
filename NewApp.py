@@ -63,22 +63,22 @@ else: income = 9
 
 # Education Question Setup
 education = st.selectbox("Education level",
-    options = ["Less than high school",
+    options = ["< High School",
                "High School Diploma",
-               "High school graduate",
-               "Some college, no degree",
-               "Two-year associate degree",
-               "Four-year college",
-               "Some postgraduate or professional schooling, no postgraduate degree",
+               "High School Graduate",
+               "Some College, No Degree",
+               "2-year Associate Degree",
+               "4-year College",
+               "Some Post Grad or professional schooling, no postgraduate degree",
                "Postgraduate or professional schooling, including master's, doctorate, medical, or law degree"])
 
 if education == "< High School" :education = 1
 elif education == "High School Diploma": education = 2
-elif education == "High school graduate": education = 3
+elif education == "High School Graduate": education = 3
 elif education == "Some College, No Degree" : education = 4
-elif education == "Two-Year Associate Degree" : education = 5
-elif education == "Four-Year College": education = 6
-elif education == "Some postgraduate or professional schooling, no postgraduate degree": education = 7
+elif education == "2-Year Associate Degree" : education = 5
+elif education == "4-Year College": education = 6
+elif education == "Some Post Grad or professional schooling, no postgraduate degree": education = 7
 else: education = 8
 
 #Parent Question Setup
@@ -102,11 +102,11 @@ if gender == "Female" : gender = 1
 else: gender = 0
 
 #Age Question Slider
-age = st.slider( 'Age', 1, 97, 5)
+age = st.slider( 'Age', 1, 97, 18)
 
 #Output Final Probability
 user= [income, education, parent, married, gender, age]
 
-st.write(f'THe Odds of a User being on LinkedIn: {round(lr.predict_proba([user])[0][1]*100, 2)}')
+st.write(f'The Probability of you being on LinkedIn is: {round(lr.predict_proba([user])[0][1]*100, 2)}')
 
-st.write(f'THe Odds of a User being on LinkedIn: {lr.predict([user])}')
+st.write(f' Are you a User on LinkedIn? 1= Yes 0= No: {lr.predict([user])}')
